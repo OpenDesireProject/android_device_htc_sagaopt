@@ -9,12 +9,10 @@ on early-fs
     mkdir /system
     mkdir /data 0771 system system
     mkdir /cache 0770 system cache
-    mkdir /devlog 0700 root root
     mount ext4 /dev/block/mmcblk0p25 /system wait ro barrier=1
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
     mount ext4 /dev/block/mmcblk0p26 /data wait noatime nosuid nodev barrier=1 noauto_da_alloc
     mount ext4 /dev/block/mmcblk0p27 /cache wait noatime nosuid nodev barrier=1
-    mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nosuid nodev barrier=1
 
 on post-fs-data
     # Misc, Radio and WiFi
@@ -160,21 +158,3 @@ service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmc
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
     stop netmgrd
-
-service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
-    class main
-    user root
-    disabled
-    oneshot
-
-service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
-    class main
-    user root
-    disabled
-    oneshot
-
-on property:ro.build.tags=test-keys
-    start htc_ebdlogd
-
-on property:ro.build.tags=release-keys
-    start htc_ebdlogd_rel

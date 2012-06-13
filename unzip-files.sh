@@ -24,7 +24,6 @@ unzip -j -o ../../../${DEVICE}_update.zip system/bin/akmd -d ../../../vendor/$MA
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/akmd
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/awb_camera -d  ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/bma150_usr -d  ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/bin/htc_ebdlogd -d  ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/logcat2 -d  ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/lsc_camera -d  ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/rmt_storage -d  ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -93,7 +92,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/akmd:/system/bin/akmd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/awb_camera:/system/bin/awb_camera \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/bma150_usr:/system/bin/bma150_usr \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/htc_ebdlogd:/system/bin/htc_ebdlogd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/logcat2:/system/bin/logcat2 \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/lsc_camera:/system/bin/lsc_camera \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/rmt_storage:/system/bin/rmt_storage \\

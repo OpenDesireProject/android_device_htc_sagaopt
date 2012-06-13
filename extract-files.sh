@@ -24,7 +24,6 @@ adb pull system/bin/akmd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/akmd
 adb pull system/bin/awb_camera ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull system/bin/bma150_usr ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull system/bin/htc_ebdlogd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull system/bin/logcat2 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull system/bin/lsc_camera ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull system/bin/rmt_storage ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -92,7 +91,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/akmd:/system/bin/akmd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/awb_camera:/system/bin/awb_camera \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/bma150_usr:/system/bin/bma150_usr \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/htc_ebdlogd:/system/bin/htc_ebdlogd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/logcat2:/system/bin/logcat2 \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/lsc_camera:/system/bin/lsc_camera \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/rmt_storage:/system/bin/rmt_storage \\
