@@ -63,7 +63,7 @@ static int write_int (const char* path, int value) {
 	fd = open(path, O_RDWR);
 	if (fd < 0) {
 		if (already_warned == 0) {
-			LOGE("write_int failed to open %s\n", path);
+			ALOGE("write_int failed to open %s\n", path);
 			already_warned = 1;
 		}
 		return -errno;
@@ -115,7 +115,7 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 					write_int (GREEN_BLINK_FILE, 0);
 					break;
 				default:
-					LOGE("set_led_state colorRGB=%08X, unknown color\n",
+					ALOGE("set_led_state colorRGB=%08X, unknown color\n",
 							colorRGB);
 					break;
 			}
@@ -138,7 +138,7 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 			}
 			break;
 		default:
-			LOGE("set_led_state colorRGB=%08X, unknown mode %d\n",
+			ALOGE("set_led_state colorRGB=%08X, unknown mode %d\n",
 					colorRGB, state->flashMode);
 	}
 
@@ -159,7 +159,7 @@ static void set_speaker_light_locked_dual (struct light_device_t *dev, struct li
 		write_int (GREEN_LED_FILE, 1);
 		write_int (AMBER_BLINK_FILE, 1);
 	} else {
-		LOGE("set_led_state (dual) unexpected color: bcolorRGB=%08x\n", bcolorRGB);
+		ALOGE("set_led_state (dual) unexpected color: bcolorRGB=%08x\n", bcolorRGB);
 	}
 
 }
@@ -198,7 +198,7 @@ static int set_light_backlight(struct light_device_t* dev,
 		struct light_state_t const* state) {
 	int err = 0;
 	int brightness = rgb_to_brightness(state);
-	LOGV("%s brightness=%d color=0x%08x",
+	ALOGV("%s brightness=%d color=0x%08x",
 		__func__,brightness, state->color);
 	pthread_mutex_lock(&g_lock);
 	g_backlight = brightness;
