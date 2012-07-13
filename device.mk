@@ -142,6 +142,6 @@ $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 $(call inherit-product, device/htc/saga/media_a1026.mk)
 $(call inherit-product, device/htc/saga/media_htcaudio.mk)
 
-$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/htc/saga/saga-vendor.mk)
