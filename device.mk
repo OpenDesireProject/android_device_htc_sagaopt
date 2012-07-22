@@ -106,7 +106,19 @@ PRODUCT_COPY_FILES += \
     device/htc/saga/dsp/soundimage/Sound_SRS_V_SPK.txt:system/etc/soundimage/Sound_SRS_V_SPK.txt \
     device/htc/saga/dsp/soundimage/Sound_Treble_Booster.txt:system/etc/soundimage/Sound_Treble_Booster.txt \
     device/htc/saga/dsp/soundimage/Sound_Vocal_Booster.txt:system/etc/soundimage/Sound_Vocal_Booster.txt
+
+# Device specific firmware
+PRODUCT_COPY_FILES += \
+    device/htc/vision/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
+    device/htc/vision/firmware/default.acdb:system/etc/firmware/default.acdb \
+    device/htc/vision/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
+    device/htc/vision/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb \
+    device/htc/vision/firmware/vidc_720p_mp2_dec_mc.fw:system/etc/firmware/vidc_720p_mp2_dec_mc.fw \
+    device/htc/vision/firmware/Vision_SPK.acdb:system/etc/firmware/Vision_SPK.acdb 
  
+# Copy bcm4329 firmware
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
+
 PRODUCT_COPY_FILES += \
     device/htc/saga/vold.fstab:system/etc/vold.fstab
 
@@ -127,7 +139,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    device/htc/saga/prebuilt/bcm4329.ko:system/lib/modules/bcm4329.ko
+    device/htc/saga/prebuilt/bcmdhd.ko:system/lib/modules/bcmdhd.ko
 
 
 # stuff common to all HTC phones
