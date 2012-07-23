@@ -31,6 +31,7 @@
 /dev/radio_feedback       0660   radio      radio
 /dev/smd*                 0640   radio      radio
 
+/dev/rfkill               0660    root        wifi
 /dev/ttyHS0               0660   bluetooth  bluetooth
 
 /dev/msm_camera/*         0660   system     camera
