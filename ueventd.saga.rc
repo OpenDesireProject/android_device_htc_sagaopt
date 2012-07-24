@@ -35,3 +35,4 @@
 /dev/ttyHS0               0660   bluetooth  bluetooth
 
 /dev/msm_camera/*         0660   system     camera
+/sys/devices/virtual/usb_composite/*   enable      0664  root   system
