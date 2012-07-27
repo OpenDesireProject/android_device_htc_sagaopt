@@ -80,4 +80,6 @@ BOARD_HAS_NO_MISC_PARTITION := true
 
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
+BOARD_USE_NEW_LIBRIL_HTC := true
+
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
