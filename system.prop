@@ -3,6 +3,10 @@
 #
 ro.sf.lcd_density=240
 
+# Disable system restrictions for all builds
+persist.sys.strictmode.visual=0 
+ro.secure=0
+
 #qcom display
 debug.sf.hw=1
 debug.composition.type=dyn
