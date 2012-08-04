@@ -106,15 +106,6 @@ PRODUCT_COPY_FILES += \
     device/htc/saga/dsp/soundimage/Sound_SRS_V_SPK.txt:system/etc/soundimage/Sound_SRS_V_SPK.txt \
     device/htc/saga/dsp/soundimage/Sound_Treble_Booster.txt:system/etc/soundimage/Sound_Treble_Booster.txt \
     device/htc/saga/dsp/soundimage/Sound_Vocal_Booster.txt:system/etc/soundimage/Sound_Vocal_Booster.txt
-
-# Device specific firmware
-PRODUCT_COPY_FILES += \
-    device/htc/vision/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
-    device/htc/vision/firmware/default.acdb:system/etc/firmware/default.acdb \
-    device/htc/vision/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
-    device/htc/vision/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb \
-    device/htc/vision/firmware/vidc_720p_mp2_dec_mc.fw:system/etc/firmware/vidc_720p_mp2_dec_mc.fw \
-    device/htc/vision/firmware/Vision_SPK.acdb:system/etc/firmware/Vision_SPK.acdb 
  
 # BT main.conf
 PRODUCT_COPY_FILES += \
