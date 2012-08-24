@@ -10,6 +10,8 @@ $(call inherit-product, vendor/cm/config/gsm.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_saga BUILD_ID=JRO03C BUILD_FINGERPRINT=htc_europe/htc_saga/saga:4.1.1/JRO03C/87995:user/release-keys PRIVATE_BUILD_DESC="4.1.1 Andromadus release-keys"
 
+TARGET_BOOTANIMATION_NAME := vertical-480
+
 PRODUCT_NAME := cm_saga
 PRODUCT_DEVICE := saga
 
