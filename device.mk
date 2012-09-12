@@ -128,14 +128,13 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := device/htc/saga/prebuilt/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
     device/htc/saga/prebuilt/bcmdhd.ko:system/lib/modules/bcmdhd.ko
-
+endif
 
 # stuff common to all HTC phones
 #$(call inherit-product, device/htc/common/common.mk)

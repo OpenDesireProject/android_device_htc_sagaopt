@@ -66,9 +66,10 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
-TARGET_KERNEL_SOURCE := kernel/htc/msm7x30
-TARGET_KERNEL_CONFIG := cyanogen_saga_defconfig
-TARGET_PREBUILT_KERNEL := device/htc/saga/prebuilt/kernel
+TARGET_KERNEL_CONFIG := saga_andromadus_defconfig
+TARGET_KERNEL_SOURCE := kernel/htc/msm7x30-3.0
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-linaro-4.7
+#TARGET_PREBUILT_KERNEL := device/htc/saga/prebuilt/kernel
 
 # Boot animation	
 TARGET_SCREEN_HEIGHT := 800
