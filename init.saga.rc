@@ -6,6 +6,7 @@ on early-init
     mkdir /storage/sdcard0 0000 system system
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
+    write /proc/sys/vm/min_free_kbytes 8192
 
 on early-fs
     mkdir /system
