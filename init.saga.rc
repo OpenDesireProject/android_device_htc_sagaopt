@@ -113,7 +113,7 @@ on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -Dnl80211 -iwlan0 c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
+    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
     class main
     user root
     group wifi inet
