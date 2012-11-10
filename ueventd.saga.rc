@@ -43,5 +43,3 @@
 /dev/tun                  0660   system     vpn
 /dev/ion                  0664   system     system
 
-# sys devices
-/sys/android_touch/sweep2wake   0664   system  system
