@@ -16,9 +16,6 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-#Andromadus Vendor include
-$(call inherit-product, vendor/andromadus/config/andromadus.mk)
-
 # The gps config appropriate for this device
 
 PRODUCT_COPY_FILES += device/htc/saga/gps.conf:system/etc/gps.conf
