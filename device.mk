@@ -21,13 +21,14 @@ $(call inherit-product, vendor/andromadus/config/andromadus.mk)
 
 # The gps config appropriate for this device
 
-PRODUCT_COPY_FILES += device/htc/saga/gps.conf:system/etc/gps.conf
+PRODUCT_COPY_FILES += device/htc/saga/configs/gps.conf:system/etc/gps.conf
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
-    device/htc/saga/init.saga.rc:root/init.saga.rc \
-    device/htc/saga/ueventd.saga.rc:root/ueventd.saga.rc
+    device/htc/saga/ramdisk/init.saga.rc:root/init.saga.rc \
+    device/htc/saga/ramdisk/ueventd.saga.rc:root/ueventd.saga.rc \
+    device/htc/vision/ramdisk/fstab.saga:root/fstab.saga
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -53,7 +54,7 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/saga/overlay
 
 # gsm config xml file
 PRODUCT_COPY_FILES += \
-    device/htc/saga/voicemail-conf.xml:system/etc/voicemail-conf.xml
+    device/htc/saga/configs/voicemail-conf.xml:system/etc/voicemail-conf.xml
 
 # GPS / Lights / Sensors
 PRODUCT_PACKAGES += \
@@ -114,11 +115,7 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 PRODUCT_COPY_FILES += \
-    device/htc/saga/vold.fstab:system/etc/vold.fstab
-
-# media config xml file
-#PRODUCT_COPY_FILES += \
-#    device/htc/saga/media_profiles.xml:system/etc/media_profiles.xml
+    device/htc/saga/configs/vold.fstab:system/etc/vold.fstab
 
 # Kernel modules
 #PRODUCT_COPY_FILES += \
@@ -136,7 +133,7 @@ endif
 
 	# zram
 PRODUCT_COPY_FILES += \
-    device/htc/saga/zram.sh:root/sbin/zram.sh
+    device/htc/saga/ramdisk/zram.sh:root/sbin/zram.sh
 
 # stuff common to all HTC phones
 #$(call inherit-product, device/htc/common/common.mk)
