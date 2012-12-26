@@ -5,6 +5,7 @@ ro.sf.lcd_density=240
 
 # Disable system restrictions for all builds
 persist.sys.strictmode.visual=0 
+persist.sys.strictmode.disable=1
 ro.secure=0
 
 #qcom display
