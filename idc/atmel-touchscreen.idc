@@ -29,7 +29,7 @@ touch.orientationAware = 1
 # Size
 touch.size.calibration = area
 touch.size.isSummed=0
-touch.size.scale=15
+touch.size.scale=12
 touch.size.bias=0
 
 # Pressure
