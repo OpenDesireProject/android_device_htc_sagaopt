@@ -13,7 +13,6 @@ on early-init
     symlink /mnt/shell/primary/0 /storage/primary/legacy
 
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    write /proc/sys/vm/min_free_kbytes 8192
 
 on early-fs
     mkdir /devlog 0700 root root
