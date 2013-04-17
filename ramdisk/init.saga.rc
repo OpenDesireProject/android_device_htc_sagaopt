@@ -6,6 +6,8 @@ on early-init
     mkdir /storage/primary/legacy 0555 root root
     export EXTERNAL_STORAGE /storage/primary/legacy
 
+    write /proc/sys/vm/min_free_kbytes 8192
+
     # Support legacy paths
     symlink /storage/primary/legacy /sdcard
     symlink /storage/primary/legacy /mnt/sdcard
