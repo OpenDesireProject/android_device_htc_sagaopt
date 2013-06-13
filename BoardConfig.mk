@@ -71,7 +71,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
 TARGET_KERNEL_CONFIG := saga_andromadus_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/msm7x30-3.0
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-linaro-4.7
 #TARGET_PREBUILT_KERNEL := device/htc/saga/prebuilt/kernel
 
 # Boot animation	
