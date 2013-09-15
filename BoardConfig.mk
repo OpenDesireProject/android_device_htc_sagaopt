@@ -72,7 +72,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 TARGET_KERNEL_CONFIG := saga_andromadus_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/msm7x30-3.0
 #TARGET_PREBUILT_KERNEL := device/htc/saga/prebuilt/kernel
-
+TARGET_RECOVERY_FSTAB := device/htc/saga/ramdisk/fstab.saga
 # Boot animation	
 TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480

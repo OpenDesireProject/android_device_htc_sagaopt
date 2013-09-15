@@ -112,12 +112,6 @@ PRODUCT_COPY_FILES += \
 # Copy bcm4329 firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
-PRODUCT_COPY_FILES += \
-    device/htc/saga/configs/vold.fstab:system/etc/vold.fstab
-
-# Kernel modules
-#PRODUCT_COPY_FILES += \
-
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := device/htc/msm7x30-common/msm7230/kernel
 else
