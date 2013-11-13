@@ -1,9 +1,0 @@
-# device                mntpt           fs      fs_options                      fs_mgr_options
-/dev/block/mmcblk0p22	/boot		emmc	defaults			defaults
-/dev/block/mmcblk0p21	/recovery	emmc	defaults			defaults
-/dev/block/mmcblk0p25   /system         ext4    ro                              wait
-/dev/block/mmcblk0p27   /cache          ext4    noatime,nosuid,nodev,barrier=0  wait
-/dev/block/mmcblk0p26   /data           ext4    noatime,nosuid,nodev,barrier=0  wait,encryptable=footer
-/dev/block/mmcblk0p28   /devlog         ext4    noatime,nosuid,nodev,barrier=0  wait
-
-/devices/platform/msm_sdcc.4/mmc_host/mmc2  /storage/primary/legacy  auto  defaults  voldmanaged=sdcard:auto

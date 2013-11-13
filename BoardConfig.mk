@@ -12,14 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
-# This file sets variables that control the way modules are built
-# thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets
-# included in a build is to use PRODUCT_PACKAGES in a product
-# definition file).
-#
-
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
@@ -32,70 +24,26 @@ USE_CAMERA_STUB := true
 -include vendor/htc/saga/BoardConfigVendor.mk
 
 TARGET_BOOTLOADER_BOARD_NAME := saga
-
-BOARD_KERNEL_CMDLINE := no_console_suspend=1
-BOARD_KERNEL_RECOVERY_CMDLINE := $(BOARD_KERNEL_CMDLINE) msmsdcc_power_gpio=88
 BOARD_KERNEL_BASE := 0x04400000
-BOARD_KERNEL_PAGE_SIZE := 4096
 
-# needed or FFC FC's for some reason.
-TARGET_DISABLE_ARM_PIE := true
-
+# GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := saga
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
-BOARD_HAVE_HTC_FFC := true
-BOARD_USE_REVERSE_FFC := true
-
-# Workaround for Saga's broken overlay scaling
-#BOARD_OVERLAY_MINIFICATION_LIMIT := 2
-
-# cat /proc/emmc
-#dev:        size     erasesize name
-#mmcblk0p17: 00040000 00000200 "misc"
-#mmcblk0p21: 0087f400 00000200 "recovery"
-#mmcblk0p22: 00400000 00000200 "boot"
-#mmcblk0p25: 22dffe00 00000200 "system"
-#mmcblk0p27: 12bffe00 00000200 "cache"
-#mmcblk0p26: 496ffe00 00000200 "userdata"
-#mmcblk0p28: 014bfe00 00000200 "devlog"
-#mmcblk0p29: 00040000 00000200 "pdata"
-
-TARGET_USERIMAGES_USE_EXT4 := true
+# Partition info
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 585101312
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1232072704
-BOARD_BOOTIMAGE_PARTITION_SIZE := 4194304
-BOARD_FLASH_BLOCK_SIZE := 262144
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
-
+# Kernel
 TARGET_KERNEL_CONFIG := saga_andromadus_defconfig
-TARGET_KERNEL_SOURCE := kernel/htc/msm7x30-3.0
-#TARGET_PREBUILT_KERNEL := device/htc/saga/prebuilt/kernel
-TARGET_RECOVERY_FSTAB := device/htc/saga/ramdisk/fstab.saga
-# Boot animation	
-TARGET_SCREEN_HEIGHT := 800
-TARGET_SCREEN_WIDTH := 480
-
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
-BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
-BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
-BOARD_USES_MMCUTILS := true
-BOARD_HAS_NO_MISC_PARTITION := true
-
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-
-BOARD_USE_NEW_LIBRIL_HTC := true
-
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/saga/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/saga/configs/libbt_vndcfg.txt
 
-# No SDK blobs
-BUILD_EMULATOR_SENSORS_MODULE := false
-BUILD_EMULATOR_GPS_MODULE := false
+# Misc
+BOARD_HAVE_HTC_FFC := true
+BOARD_USE_REVERSE_FFC := true
+# needed or FFC FC's for some reason.
+TARGET_DISABLE_ARM_PIE := true
 

@@ -24,8 +24,7 @@ PRODUCT_COPY_FILES += device/htc/saga/configs/gps.conf:system/etc/gps.conf
 
 PRODUCT_COPY_FILES += \
     device/htc/saga/ramdisk/init.saga.rc:root/init.saga.rc \
-    device/htc/saga/ramdisk/ueventd.saga.rc:root/ueventd.saga.rc \
-    device/htc/saga/ramdisk/fstab.saga:root/fstab.saga
+    device/htc/saga/ramdisk/ueventd.saga.rc:root/ueventd.saga.rc
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -112,17 +111,6 @@ PRODUCT_COPY_FILES += \
 # Copy bcm4329 firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/htc/msm7x30-common/msm7230/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-PRODUCT_COPY_FILES += \
-    device/htc/msm7x30-common/msm7230/bcmdhd.ko:system/lib/modules/bcmdhd.ko
-endif
-
 $(call inherit-product, build/target/product/full_base.mk)
 
 # common msm7x30 configs
@@ -133,8 +121,5 @@ $(call inherit-product, device/htc/saga/media_a1026.mk)
 $(call inherit-product, device/htc/saga/media_htcaudio.mk)
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
-
-# lower the increment
-ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.heapgrowthlimit=36m
 
 $(call inherit-product-if-exists, vendor/htc/saga/saga-vendor.mk)

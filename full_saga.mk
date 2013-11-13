@@ -34,5 +34,5 @@ $(call inherit-product, device/htc/saga/device.mk)
 PRODUCT_NAME := full_saga
 PRODUCT_DEVICE := saga
 PRODUCT_BRAND := HTC
-PRODUCT_MODEL := Desire S
 PRODUCT_MANUFACTURER := HTC
+PRODUCT_MODEL := Desire S

@@ -20,10 +20,10 @@ on early-fs
     mkdir /devlog 0700 root root
 
 on fs
-    mount_all /fstab.saga
+    mount_all /fstab.msm7x30
 
 on emmc-fs
-    mount_all /fstab.saga
+    mount_all /fstab.msm7x30
 
 on post-fs
     chmod 0771 /cache
@@ -174,13 +174,6 @@ service akmd /system/bin/akmd
     class main
     user compass
     group compass misc input
-
-# Bugreport is triggered by the KEY_VOLUMEUP and BTN_MOUSE keycodes
-service bugreport /system/bin/bugmailer.sh -v
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmcblk0p14
     class main
