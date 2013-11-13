@@ -24,7 +24,9 @@ PRODUCT_COPY_FILES += device/htc/saga/configs/gps.conf:system/etc/gps.conf
 
 PRODUCT_COPY_FILES += \
     device/htc/saga/ramdisk/init.saga.rc:root/init.saga.rc \
-    device/htc/saga/ramdisk/ueventd.saga.rc:root/ueventd.saga.rc
+    device/htc/saga/ramdisk/ueventd.saga.rc:root/ueventd.saga.rc \
+    device/htc/msm7x30-common/rootdir/fstab.msm7x30:root/fstab.saga
+# the line above is terribly dirty hack. But fstab doesn't work without it for some reason.
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
