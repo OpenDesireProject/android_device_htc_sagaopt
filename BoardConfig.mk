@@ -27,7 +27,6 @@ TARGET_BOOTLOADER_BOARD_NAME := saga
 BOARD_KERNEL_BASE := 0x04400000
 
 # GPS
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := saga
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Partition info
@@ -44,6 +43,4 @@ BOARD_BLUEDROID_VENDOR_CONF := device/htc/saga/configs/libbt_vndcfg.txt
 # Misc
 BOARD_HAVE_HTC_FFC := true
 BOARD_USE_REVERSE_FFC := true
-# needed or FFC FC's for some reason.
-TARGET_DISABLE_ARM_PIE := true
 
