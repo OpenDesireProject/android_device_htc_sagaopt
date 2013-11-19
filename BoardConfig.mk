@@ -43,4 +43,3 @@ BOARD_BLUEDROID_VENDOR_CONF := device/htc/saga/configs/libbt_vndcfg.txt
 # Misc
 BOARD_HAVE_HTC_FFC := true
 BOARD_USE_REVERSE_FFC := true
-
