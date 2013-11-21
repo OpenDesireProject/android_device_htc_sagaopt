@@ -62,9 +62,10 @@ on boot
     chown radio system /sys/camera_led_status/led_ril_status
     chmod 0644         /sys/camera_led_status/led_ril_status
 
-    # Sweep2wake SysFS permissions
+    # Sweep2wake & Vibration tuning SysFS permissions
     chmod 0666          /sys/android_touch/sweep2wake
     chown system system /sys/android_touch/sweep2wake
+    chown system system /sys/class/timed_output/vibrator/voltage_level
 
     # Power Management
     chmod 0664 /sys/module/pm/parameters/idle_sleep_mode
