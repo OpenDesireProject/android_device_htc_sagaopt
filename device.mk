@@ -55,9 +55,8 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/saga/overlay
 PRODUCT_COPY_FILES += \
     device/htc/saga/configs/voicemail-conf.xml:system/etc/voicemail-conf.xml
 
-# GPS / Lights / Sensors
+# Lights / Sensors
 PRODUCT_PACKAGES += \
-    gps.saga \
     lights.saga \
     sensors.saga
 
