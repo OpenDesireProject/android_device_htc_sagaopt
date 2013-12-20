@@ -1,26 +1,17 @@
 import init.htc7x30.usb.rc
 
-on early-init
-    mkdir /storage 0555 root root
-    mkdir /storage/sdcard0 0555 root root
+on init
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /storage/sdcard0 0700 root root
     export EXTERNAL_STORAGE /storage/sdcard0
-
-    write /proc/sys/vm/min_free_kbytes 8192
 
     # Support legacy paths
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
-    symlink /mnt/shell/primary/0 /storage/sdcard0
 
-    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-
-on early-fs
     mkdir /devlog 0700 root root
 
 on fs
-    mount_all /fstab.msm7x30
-
-on emmc-fs
     mount_all /fstab.msm7x30
 
 on post-fs
@@ -31,16 +22,10 @@ on post-fs
 
 on post-fs-data
     # Misc, Radio and WiFi
-    chmod 0771 /data
-    chown system system /data
-    mkdir /data/radio 0770 radio radio
-    mkdir /data/misc 1771 system misc
-    mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/hostapd 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
 
     symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
     symlink /dev/socket/wpa_wlan0 /data/system/wpa_supplicant/wlan0
@@ -135,7 +120,9 @@ on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
+    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf \
+    -O/data/misc/wifi/sockets \
+    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     class main
     user root
     group wifi inet
@@ -143,7 +130,7 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     class main
     disabled
     oneshot
@@ -158,11 +145,6 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service iprenew_p2p /system/bin/dhcpcd -n
-    class main
-    disabled
-    oneshot
-
 service iprenew_bnep0 /system/bin/dhcpcd -n
     class main
     disabled
@@ -173,6 +155,11 @@ service akmd /system/bin/akmd
     class main
     user compass
     group compass misc input
+
+# sdcard daemon
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+   class main
+   disabled
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmcblk0p14
     class main
