@@ -1,5 +1,8 @@
 import init.htc7x30.usb.rc
 
+on early-init
+    write /sys/block/mmcblk0/queue/scheduler noop
+
 on init
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /storage/sdcard0 0700 root root
@@ -8,22 +11,21 @@ on init
     # Support legacy paths
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
+    mkdir /storage/primary 0555 root root
+    symlink /storage/sdcard0 /storage/primary/legacy
 
-    mkdir /devlog 0700 root root
+    chmod 666 /proc/cmdline
 
 on fs
-    mount_all /fstab.msm7x30
+    mount_all /fstab.saga
+#    swapon_all /fstab.saga
 
 on post-fs
     chmod 0771 /cache
     chown system cache /cache
-    chmod 0700 /devlog
-    chown root root /devlog
 
 on post-fs-data
-    # Misc, Radio and WiFi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/hostapd 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
 
@@ -33,36 +35,26 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
 
-on property:sys.boot_completed=1
-    write /sys/module/pm2/parameters/idle_sleep_mode 1
+on early-boot
+    # set RLIMIT_MEMLOCK to 64MB
+    setrlimit 8 67108864 67108864
 
     on property:init.svc.wpa_supplicant=stopped
         stop dhcpcd
 
-
 on boot
-    # CyanogenMod SysFS entries
-    chown radio system /sys/module/gpio_event/parameters/phone_call_status
-    chmod 0664         /sys/module/gpio_event/parameters/phone_call_status
-    chown radio system /sys/camera_led_status/led_ril_status
-    chmod 0644         /sys/camera_led_status/led_ril_status
-
-    # Sweep2wake & Vibration tuning SysFS permissions
-    chmod 0666          /sys/android_touch/sweep2wake
-    chown system system /sys/android_touch/sweep2wake
-    chown system system /sys/class/timed_output/vibrator/voltage_level
-
-    # Power Management
     chmod 0664 /sys/module/pm/parameters/idle_sleep_mode
 
     # Disable idle power collapse to speed up the boot process
     # Enable it when boot is complete
     write /sys/module/pm2/parameters/idle_sleep_mode 3
 
-    # Disable IPv6 over mobile radio
-#    write /proc/sys/net/ipv6/conf/rmnet0/disable_ipv6 1
-#    write /proc/sys/net/ipv6/conf/rmnet1/disable_ipv6 1
-#    write /proc/sys/net/ipv6/conf/rmnet2/disable_ipv6 1
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
+    chown radio system /sys/module/gpio_event/parameters/phone_call_status
+    chmod 0664         /sys/module/gpio_event/parameters/phone_call_status
+    chown radio system /sys/camera_led_status/led_ril_status
+    chmod 0644         /sys/camera_led_status/led_ril_status
 
     # HTC SysFS for "Flip to Speaker"
     chown radio radio /sys/class/htc_accelerometer/accelerometer/PhoneOnOffFlag
@@ -84,21 +76,14 @@ on boot
 
     # bluetooth power up/down interface
     chown bluetooth bluetooth /dev/ttyHS0
-
-    chmod 0660 /sys/class/rfkill/rfkill0/type
-    chmod 0660 /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chmod 0660 /sys/class/rfkill/rfkill0/state
 
-    # Bluetooth MAC address path
+    # Bluetooth MAC address programming
     chown bluetooth net_bt_stack /sys/module/htc_bdaddress/parameters/bdaddress
     setprop ro.bt.bdaddr_path /sys/module/htc_bdaddress/parameters/bdaddress
-
-    # bluetooth LPM
-    chmod 0220 /proc/bluetooth/sleep/lpm
-    chmod 0220 /proc/bluetooth/sleep/btwrite
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    chown system system /sys/class/switch/dock/bt_pin
 
     # liblights permissions
     chown system system /sys/class/leds/amber/brightness
@@ -107,18 +92,59 @@ on boot
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/button-backlight/brightness
     chown system camera /sys/class/leds/flashlight/brightness
-    chmod 0666          /sys/class/leds/flashlight/brightness
+    chmod 0660          /sys/class/leds/flashlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
 
-    # MMC devices readahead performance tweak
+    # Increase readahead buffers on MMC devices
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
     write /sys/block/mmcblk1/queue/read_ahead_kb 1024
 
     # Flash storage isn't a good entropy source, and only causes locking
     # overhead in the kernel. Turn it off.
     write /sys/block/mmcblk0/queue/add_random 0
+    write /sys/block/mmcblk1/queue/add_random 0
 
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    # Read only 1 page at a time
+    write /proc/sys/vm/page-cluster 0
+
+    # KSM
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+
+    # VPN
+    mkdir /data/misc/vpn 0770 system vpn
+    chown system vpn /data/misc/vpn
+    mkdir /data/misc/vpn/profiles 0770 system vpn
+    chown system vpn /data/misc/vpn/profiles
+
+    # Allow system to have access to /dev/tun directory
+    mkdir /dev/tun 0770 system vpn
+    chown system vpn /dev/tun
+    chmod 0770 /dev/tun
+
+    # Advanced settings
+    chown root system /sys/class/timed_output/vibrator/voltage_level
+    chmod 0664 /sys/class/timed_output/vibrator/voltage_level
+    chown system system /sys/class/leds/flashlight/soft_flash
+
+    # To prevent out of order acknowledgements from making
+    # connection tracking to treat them as not belonging to
+    # the connection they belong to.
+    # Otherwise, a weird issue happens in which some long
+    # connections on high-throughput links get dropped when
+    # an ack packet comes out of order
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
+
+    chown root system /proc/net/ip_conntrack
+
+on property:sys.boot_completed=1
+    write /sys/module/pm2/parameters/idle_sleep_mode 1
+
+on property:init.svc.bootanim=stopped
+    write /sys/block/mmcblk0/queue/scheduler row
+
+on property:init.svc.wpa_supplicant=stopped
+    stop dhcpcd
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -136,13 +162,14 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     disabled
     oneshot
 
+#bluetooth
 service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
 
 service iprenew_wlan0 /system/bin/dhcpcd -n
-    class main
+    class late_start
     disabled
     oneshot
 
@@ -153,19 +180,52 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
 
 # Compass and accelerometer daemon
 service akmd /system/bin/akmd
-    class main
+    class core
     user compass
     group compass misc input
 
 # sdcard daemon
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
-   class main
-   disabled
+    class late_start
+    disabled
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmcblk0p14
-    class main
+    class core
     user root
 
 on property:ro.use_data_netmgrd=false
-    # netmgr not supported on specific target
     stop netmgrd
+
+on property:service.adb.root=1
+    write /sys/class/android_usb/android0/enable 0
+    restart adbd
+    write /sys/class/android_usb/android0/enable 1
+
+service setup_fs /system/bin/setup_fs mmcblk0p26 mmcblk0p27
+    class core
+    user root
+    group root
+    oneshot
+
+# CM Performance Profiles
+
+# Powersave
+on property:sys.perf.profile=0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 806400
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 122000
+    write /sys/module/pm2/parameters/idle_sleep_mode 1
+
+# Balanced
+on property:sys.perf.profile=1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1024000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
+    write /sys/module/pm2/parameters/idle_sleep_mode 1
+
+# Performance
+on property:sys.perf.profile=2
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1024000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
+    write /sys/module/pm2/parameters/idle_sleep_mode 3
