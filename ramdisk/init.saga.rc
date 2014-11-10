@@ -27,9 +27,9 @@ on post-fs
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/hostapd 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
 
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
@@ -47,10 +47,29 @@ on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
+	# CyanogenMod SysFS entries
     chown radio system /sys/module/gpio_event/parameters/phone_call_status
     chmod 0664         /sys/module/gpio_event/parameters/phone_call_status
     chown radio system /sys/camera_led_status/led_ril_status
     chmod 0644         /sys/camera_led_status/led_ril_status
+
+	# Sweep2wake permissions & fast charge
+	chown root system /sys/android_touch/sweep2wake
+	chmod 0664 /sys/android_touch/sweep2wake
+	chown root system /sys/android_touch/s2w_allow_stroke
+	chmod 0664 /sys/android_touch/s2w_allow_stroke
+	chown root system /sys/android_touch/s2w_min_distance
+	chmod 0664 /sys/android_touch/s2w_min_distance
+	chown root system /sys/android_touch/s2w_register_threshold
+	chmod 0664 /sys/android_touch/s2w_register_threshold
+	chown root system /sys/android_touch/doubletap2wake
+	chmod 0664 /sys/android_touch/doubletap2wake
+	chown root system /sys/android_touch/dt2w_max_duration
+	chmod 0664 /sys/android_touch/dt2w_max_duration
+	chown root system /sys/android_touch/dt2w_min_duration
+	chmod 0664 /sys/android_touch/dt2w_min_duration
+	chown root system /sys/kernel/fast_charge/force_fast_charge
+	chmod 0664 /sys/kernel/fast_charge/force_fast_charge
 
     # HTC SysFS for "Flip to Speaker"
     chown radio radio /sys/class/htc_accelerometer/accelerometer/PhoneOnOffFlag
@@ -208,8 +227,8 @@ service setup_fs /system/bin/setup_fs mmcblk0p26 mmcblk0p27
 # Powersave
 on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 806400
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 122000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 768000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
     write /sys/module/pm2/parameters/idle_sleep_mode 1
 
 # Balanced
@@ -222,6 +241,6 @@ on property:sys.perf.profile=1
 # Performance
 on property:sys.perf.profile=2
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1024000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 368640
     write /sys/module/pm2/parameters/idle_sleep_mode 3
