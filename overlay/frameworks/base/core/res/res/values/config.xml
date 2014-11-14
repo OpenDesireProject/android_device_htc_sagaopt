@@ -146,6 +146,11 @@
         <item>7</item>
     </integer-array>
 
+	<!-- Configure mobile network MTU. The standard default is set here but each carrier
+		 may have a specific value set in an overlay config.xml file.
+		 Upstream default of 1358 will kill tethering so keep it on 1500.-->
+	<integer name="config_mobile_mtu">1500</integer>
+
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
