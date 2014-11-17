@@ -44,10 +44,11 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1232072704
 BOARD_BOOTIMAGE_PARTITION_SIZE := 5194304
 BOARD_FLASH_BLOCK_SIZE := 262144
 
+# Common stuffs for proper compilation
+TARGET_SPECIFIC_HEADER_PATH := device/htc/saga/include
+
 TARGET_KERNEL_SOURCE := kernel/htc/msm7x30
 TARGET_KERNEL_CONFIG := saga_cm11_defconfig
-#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.8
-#TARGET_PREBUILT_KERNEL := device/htc/ace/prebuilt/kernel/kernel
 
 TARGET_NO_SEPARATE_RECOVERY := true
 TARGET_RECOVERY_FSTAB := device/htc/saga/ramdisk/fstab.saga
