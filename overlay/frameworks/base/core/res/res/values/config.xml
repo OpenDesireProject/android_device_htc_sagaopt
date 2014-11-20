@@ -32,8 +32,8 @@
     <!-- Default color for notification LED is green -->
     <color name="config_defaultNotificationColor">#ff00ff00</color>
 
-    <!-- If this is true, the screen will fade off. -->
-    <bool name="config_animateScreenLights">false</bool>
+    <!-- If this is true, the screen will fade off.
+    <bool name="config_animateScreenLights">false</bool>-->
 
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
@@ -170,8 +170,8 @@
     <!-- Disable lockscreen translucent decor by default -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
-    <!-- Device supports LED flashlight -->
-    <bool name="config_enableTorch">true</bool>
+    <!-- Device supports LED flashlight
+    <bool name="config_enableTorch">true</bool>-->
 
     <!-- Minimum screen brightness allowed by the power manager. -->
     <integer name="config_screenBrightnessDim">41</integer>
@@ -191,9 +191,9 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">15</integer>
 
-    <!-- Performance profiles -->
+    <!-- Performance profiles
     <string name="config_perf_profile_prop">sys.perf.profile</string>
-    <string name="config_perf_profile_default_entry">1</string>
+    <string name="config_perf_profile_default_entry">1</string>-->
 
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
@@ -210,8 +210,8 @@
 	<!-- Enable the option to check proximity sensor when deciding whether to
 		 turn the screen on
 		 NOTE ! - Enable for devices that have a fast response proximity sensor
-	-->
+
 	<bool name="config_proximityCheckOnWake">false</bool>
-	<integer name="config_proximityCheckTimeout">600</integer>
+	<integer name="config_proximityCheckTimeout">600</integer>-->
 
 </resources>
