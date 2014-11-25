@@ -33,7 +33,7 @@
 
 TARGET_BOOTLOADER_BOARD_NAME := saga
 
-BOARD_KERNEL_CMDLINE := no_console_suspend=1
+BOARD_KERNEL_CMDLINE := no_console_suspend=1  androidboot.selinux=permissive
 BOARD_KERNEL_RECOVERY_CMDLINE := $(BOARD_KERNEL_CMDLINE) msmsdcc_power_gpio=88
 BOARD_KERNEL_BASE := 0x04400000
 BOARD_KERNEL_PAGE_SIZE := 4096
@@ -81,6 +81,13 @@ BUILD_EMULATOR_SENSORS_MODULE := false
 BUILD_EMULATOR_GPS_MODULE := false
 
 COMMON_GLOBAL_CFLAGS += -DWITH_SPADE_DSP_PROFILE
+
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
+  endif
+endif
 
 # TWRP
 DEVICE_RESOLUTION := 480x800
