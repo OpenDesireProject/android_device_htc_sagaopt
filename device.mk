@@ -148,25 +148,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0
 endif
 
-# Odexed extra version and goo.im rom
-ifeq ($(TARGET_WITH_DEXPREOPT),true)
-ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-TARGET_UNOFFICIAL_BUILD_ID := ODEXED-$(TARGET_UNOFFICIAL_BUILD_ID)
-else
-TARGET_UNOFFICIAL_BUILD_ID := ODEXED
-endif
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.goo.rom=MustaKitkatNightlyOdexed
-else
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.goo.rom=MustaKitkatNightly
-endif
-
-# The rest of goo.im props
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.goo.developerid=Mustaavalkosta \
-	ro.goo.version=$(shell date -u +%Y%m%d)
-
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
