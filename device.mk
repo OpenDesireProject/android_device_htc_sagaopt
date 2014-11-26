@@ -141,6 +141,13 @@ PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += en_US
 
+ifeq ($(DISABLE_SECURITY),true)
+# Disable ADB authentication and use root shell
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	ro.adb.secure=0 \
+	ro.secure=0
+endif
+
 # Odexed extra version and goo.im rom
 ifeq ($(TARGET_WITH_DEXPREOPT),true)
 ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
