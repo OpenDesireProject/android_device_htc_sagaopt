@@ -110,6 +110,10 @@ on boot
     chmod 0660          /sys/class/leds/flashlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
 
+    # HTC Camera switch
+    chown system camera /sys/android_camera2/htcwc
+    chmod 0660          /sys/android_camera2/htcwc
+
     # Increase readahead buffers on MMC devices
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
     write /sys/block/mmcblk1/queue/read_ahead_kb 1024
