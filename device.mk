@@ -105,12 +105,11 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/rootdir/system/vendor/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
 
-# GPS / BT / Lights / Sensors
+# BT / Lights / Sensors
 PRODUCT_PACKAGES += \
 	libbt-vendor \
 	lights.saga \
-	sensors.saga \
-	librpc
+	sensors.saga
 
 # Permissions
 PRODUCT_COPY_FILES += \
