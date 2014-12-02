@@ -80,8 +80,6 @@ BOARD_USE_NEW_LIBRIL_HTC := true
 BUILD_EMULATOR_SENSORS_MODULE := false
 BUILD_EMULATOR_GPS_MODULE := false
 
-COMMON_GLOBAL_CFLAGS += -DWITH_SPADE_DSP_PROFILE
-
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
   ifeq ($(WITH_DEXPREOPT),)
