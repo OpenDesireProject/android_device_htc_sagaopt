@@ -115,7 +115,7 @@
          be empty.  An example would be "usb.*" -->
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb\\d"</item>
-		<item>"rndis\\d"</item>
+	<item>"rndis\\d"</item>
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
@@ -143,10 +143,10 @@
         <item>7</item>
     </integer-array>
 
-	<!-- Configure mobile network MTU. The standard default is set here but each carrier
-		 may have a specific value set in an overlay config.xml file.
-		 Upstream default of 1358 will kill tethering so keep it on 1500.-->
-	<integer name="config_mobile_mtu">1500</integer>
+    <!-- Configure mobile network MTU. The standard default is set here but each carrier
+             may have a specific value set in an overlay config.xml file.
+             Upstream default of 1358 will kill tethering so keep it on 1500.-->
+    <integer name="config_mobile_mtu">1500</integer>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
@@ -176,17 +176,31 @@
     <!-- We can change button brightness -->
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 
-    <!-- Hardware 'face' keys present on the device, stored as a bit field.
-       This integer should equal the sum of the corresponding value for each
-       of the following keys present:
+    <!-- Hardware keys present on the device, stored as a bit field.
+         This integer should equal the sum of the corresponding value for each
+         of the following keys present:
              1 - Home
              2 - Back
              4 - Menu
-             8 - Search
+             8 - Assistant (Search)
             16 - App switch
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareKeys">15</integer>
+            32 - Camera
+            64 - Volume rocker
+         For example, a device with Home, Back and Menu keys would set this config to 7. -->
+    <integer name="config_deviceHardwareKeys">79</integer>
+    
+    <!-- Hardware keys present on the device with the ability to wake, stored as a bit field.
+         This integer should equal the sum of the corresponding value for each
+         of the following keys present:
+             1 - Home
+             2 - Back
+             4 - Menu
+             8 - Assistant (Search)
+            16 - App switch
+            32 - Camera
+            64 - Volume rocker
+         For example, a device with Home, Back and Menu keys would set this config to 7. -->
+    <integer name="config_deviceHardwareWakeKeys">79</integer>
 
     <!-- Performance profiles
     <string name="config_perf_profile_prop">sys.perf.profile</string>
@@ -195,13 +209,13 @@
     <!-- Indicate whether the SD card is accessible without removing the battery.
     <bool name="config_batterySdCardAccessibility">true</bool> -->
 
-	<!-- Make things go fast -->
-	<bool name="config_ui_enableFadingMarquee">false</bool>
+    <!-- Make things go fast -->
+    <bool name="config_ui_enableFadingMarquee">false</bool>
 
-	<!-- MMS user agent string -->
-	<string name="config_mms_user_agent" translatable="false">DesireS</string>
+    <!-- MMS user agent string -->
+    <string name="config_mms_user_agent" translatable="false">DesireS</string>
 
-	<!-- UAProf URL -->
-	<string name="config_mms_user_agent_profile_url" translatable="false">http://www.htcmms.com.tw/Android/Common/DesireS/ua-profile.xml</string>
+    <!-- UAProf URL -->
+    <string name="config_mms_user_agent_profile_url" translatable="false">http://www.htcmms.com.tw/Android/Common/DesireS/ua-profile.xml</string>
 
 </resources>
