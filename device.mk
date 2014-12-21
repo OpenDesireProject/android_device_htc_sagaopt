@@ -45,10 +45,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
-# gsm config xml file
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/voicemail-conf.xml:system/etc/voicemail-conf.xml
-
 # ACDB
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/rootdir/system/etc/firmware/default.acdb:system/etc/firmware/default.acdb \
