@@ -30,13 +30,6 @@ COMMON_PATH := device/htc/saga
 
 # Boot ramdisk setup
 PRODUCT_COPY_FILES += \
-	$(COMMON_PATH)/recovery/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc \
-	$(COMMON_PATH)/recovery/sbin/choice_fn:recovery/root/sbin/choice_fn \
-	$(COMMON_PATH)/recovery/sbin/detect_key:recovery/root/sbin/detect_key \
-	$(COMMON_PATH)/recovery/sbin/htcbatt:recovery/root/sbin/htcbatt \
-	$(COMMON_PATH)/recovery/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
-	$(COMMON_PATH)/recovery/sbin/power_test:recovery/root/sbin/power_test \
-	$(COMMON_PATH)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab \
 	$(COMMON_PATH)/ramdisk/fstab.saga:root/fstab.saga \
 	$(COMMON_PATH)/ramdisk/init.saga.rc:root/init.saga.rc \
 	$(COMMON_PATH)/ramdisk/ueventd.saga.rc:root/ueventd.saga.rc
