@@ -34,10 +34,6 @@ PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/ramdisk/init.saga.rc:root/init.saga.rc \
 	$(COMMON_PATH)/ramdisk/ueventd.saga.rc:root/ueventd.saga.rc
 
-# GPS config
-PRODUCT_COPY_FILES += \
-	$(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
-
 # ACDB
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/rootdir/system/etc/firmware/default.acdb:system/etc/firmware/default.acdb \
