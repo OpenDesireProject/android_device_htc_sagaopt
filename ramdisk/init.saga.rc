@@ -1,7 +1,6 @@
 import init.htc7x30.usb.rc
 
 on early-init
-    write /sys/block/mmcblk0/queue/scheduler noop
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 on init
@@ -96,8 +95,10 @@ on boot
     chmod 0660          /sys/android_camera2/htcwc
 
     # Increase readahead buffers on MMC devices
-    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
-    write /sys/block/mmcblk1/queue/read_ahead_kb 1024
+    write /sys/block/mmcblk0/queue/read_ahead_kb 3072
+    # Read / Write 12MB/s / 70MB/s on Sandisk 16GB Class 10
+    write /sys/block/mmcblk1/queue/read_ahead_kb 4096
+    write /sys/block/mmcblk1/queue/scheduler cfq
 
     # Flash storage isn't a good entropy source, and only causes locking
     # overhead in the kernel. Turn it off.
@@ -110,6 +111,8 @@ on boot
     # KSM
     write /sys/kernel/mm/ksm/pages_to_scan 100
     write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/deferred_timer 1
+    write /sys/kernel/mm/ksm/run 1
 
     # VPN
     mkdir /data/misc/vpn 0770 system vpn
@@ -149,6 +152,9 @@ on boot
 
 on property:sys.boot_completed=1
     write /sys/module/pm2/parameters/idle_sleep_mode 1
+
+on property:init.svc.bootanim=running
+    write /sys/block/mmcblk0/queue/scheduler noop
 
 on property:init.svc.bootanim=stopped
     write /sys/block/mmcblk0/queue/scheduler row
