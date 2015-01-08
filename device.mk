@@ -111,9 +111,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0
 endif
 
-# call dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
-
 # lower the increment
 ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.heapgrowthlimit=36m
 
