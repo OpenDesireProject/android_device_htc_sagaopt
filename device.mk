@@ -111,9 +111,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0
 endif
 
-# lower the increment
-ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.heapgrowthlimit=36m
-
 # Discard inherited values and use our own instead.
 PRODUCT_DEVICE := saga
 PRODUCT_NAME := saga
