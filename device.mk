@@ -28,6 +28,10 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/saga/overlay
 
 COMMON_PATH := device/htc/saga
 
+# Hardware specific features
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
+
 # Boot ramdisk setup
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/ramdisk/fstab.saga:root/fstab.saga \
