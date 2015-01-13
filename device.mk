@@ -47,6 +47,7 @@ PRODUCT_COPY_FILES += \
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/rootdir/system/etc/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
+	$(COMMON_PATH)/rootdir/system/etc/AudioBTID.csv:system/etc/AudioBTID.csv \
 	$(COMMON_PATH)/rootdir/system/etc/AIC3254_REG_DualMic.csv:system/etc/AIC3254_REG_DualMic.csv \
 	$(COMMON_PATH)/rootdir/system/etc/AIC3254_REG_DualMic.txt:system/etc/AIC3254_REG_DualMic.txt \
 	$(COMMON_PATH)/rootdir/system/etc/AIC3254_REG_DualMic_XB.csv:system/etc/AIC3254_REG_DualMic_XB.csv \
