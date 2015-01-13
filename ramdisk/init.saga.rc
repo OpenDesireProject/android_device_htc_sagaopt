@@ -1,7 +1,7 @@
 import init.htc7x30.usb.rc
 
 on early-init
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    mount debugfs debugfs /sys/kernel/debug
 
 on init
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
@@ -25,8 +25,6 @@ on post-fs
     chown system cache /cache
 
 on post-fs-data
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
 
@@ -114,12 +112,6 @@ on boot
     write /sys/kernel/mm/ksm/deferred_timer 1
     write /sys/kernel/mm/ksm/run 1
 
-    # VPN
-    mkdir /data/misc/vpn 0770 system vpn
-    chown system vpn /data/misc/vpn
-    mkdir /data/misc/vpn/profiles 0770 system vpn
-    chown system vpn /data/misc/vpn/profiles
-
     # Allow system to have access to /dev/tun directory
     mkdir /dev/tun 0770 system vpn
     chown system vpn /dev/tun
@@ -184,8 +176,6 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     class main
     user root
