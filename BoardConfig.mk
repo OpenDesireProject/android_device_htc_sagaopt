@@ -48,7 +48,7 @@ TARGET_KERNEL_SOURCE := kernel/htc/msm7x30
 TARGET_KERNEL_CONFIG := saga_cm11_defconfig
 
 TARGET_NO_SEPARATE_RECOVERY := true
-TARGET_RECOVERY_FSTAB := device/htc/saga/ramdisk/fstab.saga
+TARGET_RECOVERY_FSTAB := device/htc/msm7x30-common/rootdir/fstab.htc7x30
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Brightness
