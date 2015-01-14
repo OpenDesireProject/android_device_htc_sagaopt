@@ -31,9 +31,7 @@ PRODUCT_COPY_FILES += \
 
 # Boot ramdisk setup
 PRODUCT_COPY_FILES += \
-	device/htc/msm7x30-common/rootdir/fstab.msm7x30:root/fstab.saga \
-	$(COMMON_PATH)/ramdisk/init.saga.rc:root/init.saga.rc \
-	device/htc/msm7x30-common/rootdir/ueventd.msm7x30.rc:root/ueventd.saga.rc
+	$(COMMON_PATH)/rootdir/init.target.rc:root/init.target.rc
 
 # ACDB
 PRODUCT_COPY_FILES += \
