@@ -30,8 +30,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
 
 # Boot ramdisk setup
-PRODUCT_COPY_FILES += \
-	$(COMMON_PATH)/rootdir/init.target.rc:root/init.target.rc
+PRODUCT_PACKAGES += init.target.rc
 
 # ACDB
 PRODUCT_COPY_FILES += \
