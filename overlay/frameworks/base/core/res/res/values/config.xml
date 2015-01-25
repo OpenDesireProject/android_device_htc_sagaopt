@@ -151,9 +151,6 @@
 		 Upstream default of 1358 will kill tethering so keep it on 1500.-->
 	<integer name="config_mobile_mtu">1500</integer>
 
-    <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
-
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
