@@ -28,7 +28,7 @@
     <item name="wifi.scan">5</item>
     <item name="dsp.audio">7</item>
     <item name="dsp.video">10</item>
-    <item name="battery.capacity">1230</item>
+    <item name="battery.capacity">1450</item>
     <item name="gps.on">45</item>
     <item name="radio.active">210</item>
     <item name="radio.scanning">15</item>
