@@ -66,7 +66,6 @@ BOARD_BLUEDROID_VENDOR_CONF := device/htc/saga/bluetooth/libbt_vndcfg.txt
 BOARD_HAVE_HTC_FFC := true
 BOARD_USE_REVERSE_FFC := true
 USE_CAMERA_STUB := true
-TARGET_DISABLE_ARM_PIE := true
 
 # RIL
 BOARD_USE_NEW_LIBRIL_HTC := true
