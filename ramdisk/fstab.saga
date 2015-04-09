@@ -12,4 +12,4 @@
 /devices/platform/msm_sdcc.4/mmc_host/mmc2    auto  vfat  defaults  voldmanaged=sdcard0:auto,noemulatedsd
 
 # zram
-/dev/block/zram0                              none  swap  defaults  zramsize=134217728
+/dev/block/zram0                              none  swap  defaults  zramsize=268435456
