@@ -148,8 +148,8 @@ struct sensors_poll_context_t {
 private:
     enum {
         light               = 0,
-        proximity			= 1,
-        akm					= 2,
+        proximity,
+        akm,
         numSensorDrivers,
         numFds,
     };
