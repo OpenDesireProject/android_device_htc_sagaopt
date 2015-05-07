@@ -31,17 +31,17 @@ __BEGIN_DECLS
 
 /*****************************************************************************/
 
-int init_nusensors(hw_module_t const* module, hw_device_t** device);
+enum {
+	ID_A = 0,
+	ID_M,
+	ID_O,
+	ID_P,
+	ID_L
+};
 
-/*****************************************************************************/
-
+#ifndef ARRAY_SIZE
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
-
-#define ID_A  (0)
-#define ID_M  (1)
-#define ID_O  (2)
-#define ID_P  (3)
-#define ID_L  (4)
+#endif
 
 /*****************************************************************************/
 
