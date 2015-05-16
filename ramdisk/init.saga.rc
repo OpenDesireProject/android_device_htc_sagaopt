@@ -130,9 +130,10 @@ on boot
     write /proc/sys/vm/swappiness 100
     write /proc/sys/vm/vfs_cache_pressure 120
 
-    # KSM
-    write /sys/kernel/mm/ksm/pages_to_scan 100
-    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    # UKSM
+    write /sys/kernel/mm/uksm/max_cpu_percentage 75
+    write /sys/kernel/mm/uksm/sleep_millisecs 500
+    write /sys/kernel/mm/uksm/run 1
 
     # VPN
     mkdir /data/misc/vpn 0770 system vpn
