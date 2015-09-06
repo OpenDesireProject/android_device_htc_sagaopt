@@ -14,7 +14,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from saga device
-$(call inherit-product, device/htc/saga/saga.mk)
+$(call inherit-product, device/htc/sagaopt/saga.mk)
 
 # Boot Animation
 TARGET_SCREEN_HEIGHT := 800
@@ -22,8 +22,8 @@ TARGET_SCREEN_WIDTH := 480
 TARGET_BOOTANIMATION_HALF_RES := true
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_saga
-PRODUCT_DEVICE := saga
+PRODUCT_NAME := full_sagaopt
+PRODUCT_DEVICE := sagaopt
 PRODUCT_BRAND := htc_wwe
 PRODUCT_MANUFACTURER := HTC
 PRODUCT_MODEL := Desire S

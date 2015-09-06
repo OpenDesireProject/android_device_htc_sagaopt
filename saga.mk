@@ -14,16 +14,18 @@
 # call the proprietary setup
 $(call inherit-product, vendor/htc/saga/saga-vendor.mk)
 
+# HACK: Set TARGET_DEVICE for common configuration if blocks
+TARGET_DEVICE := sagaopt
 # Inherit common msm7x30 configs
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
 # HTC Audio
-$(call inherit-product, device/htc/saga/media_a1026.mk)
-$(call inherit-product, device/htc/saga/media_htcaudio.mk)
+$(call inherit-product, device/htc/sagaopt/media_a1026.mk)
+$(call inherit-product, device/htc/sagaopt/media_htcaudio.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/saga/overlay
+DEVICE_PACKAGE_OVERLAYS += device/htc/sagaopt/overlay
 
-COMMON_PATH := device/htc/saga
+COMMON_PATH := device/htc/sagaopt
 
 # Hardware specific features
 PRODUCT_COPY_FILES += \
@@ -91,6 +93,10 @@ PRODUCT_PACKAGES += \
 	lights.saga \
 	sensors.saga
 
+# Override /proc/sys/vm/dirty_ratio on UMS
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.vold.umsdirtyratio=20
+
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -102,10 +108,3 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.adb.secure=0 \
 	ro.secure=0
 endif
-
-# Discard inherited values and use our own instead.
-PRODUCT_DEVICE := saga
-PRODUCT_NAME := saga
-PRODUCT_BRAND := htc_wwe
-PRODUCT_MODEL := Desire S
-PRODUCT_MANUFACTURER := HTC
