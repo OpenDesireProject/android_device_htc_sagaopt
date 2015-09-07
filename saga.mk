@@ -30,7 +30,9 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
 
 # Boot ramdisk setup
-PRODUCT_PACKAGES += init.target.rc
+PRODUCT_PACKAGES += \
+    fstab.htc7x30 \
+    init.target.rc
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \

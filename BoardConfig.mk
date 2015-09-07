@@ -46,7 +46,7 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 TARGET_KERNEL_SOURCE := kernel/htc/msm7x30
 TARGET_KERNEL_CONFIG := saga_defconfig
 
-TARGET_RECOVERY_FSTAB := device/htc/msm7x30-common/rootdir/fstab.htc7x30
+TARGET_RECOVERY_FSTAB := device/htc/saga/rootdir/fstab.htc7x30
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 BOARD_HAS_NO_SELECT_BUTTON := true
 
