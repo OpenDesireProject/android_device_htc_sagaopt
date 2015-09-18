@@ -14,8 +14,6 @@
 # call the proprietary setup
 $(call inherit-product, vendor/htc/saga/saga-vendor.mk)
 
-# HACK: Set TARGET_DEVICE for common configuration if blocks
-TARGET_DEVICE := sagaopt
 # Inherit common msm7x30 configs
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
