@@ -91,10 +91,6 @@ PRODUCT_PACKAGES += \
 	lights.saga \
 	sensors.saga
 
-# Override /proc/sys/vm/dirty_ratio on UMS
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vold.umsdirtyratio=20
-
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
