@@ -56,7 +56,7 @@ TARGET_KERNEL_CONFIG := saga_defconfig
 # Recovery
 TARGET_RECOVERY_DEVICE_DIRS += device/htc/saga
 
-TARGET_RECOVERY_FSTAB := device/htc/msm7x30-common/rootdir/fstab_variant.htc7x30
+TARGET_RECOVERY_FSTAB := device/htc/sagaopt/rootdir/fstab.htc7x30
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 BOARD_HAS_NO_SELECT_BUTTON := true
 
