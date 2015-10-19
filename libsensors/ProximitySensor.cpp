@@ -25,6 +25,8 @@
 #include <linux/capella_cm3602.h>
 
 #include <cutils/log.h>
+#include <malloc.h>
+#include <string.h>
 
 #include "ProximitySensor.h"
 

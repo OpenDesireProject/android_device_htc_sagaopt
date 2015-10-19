@@ -28,6 +28,8 @@
 
 #include <utils/Atomic.h>
 #include <utils/Log.h>
+#include <malloc.h>
+#include <string.h>
 
 #include "sensors.h"
 #include "LightSensor.h"

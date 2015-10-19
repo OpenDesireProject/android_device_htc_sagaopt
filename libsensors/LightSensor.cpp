@@ -25,6 +25,8 @@
 #include <linux/lightsensor.h>
 
 #include <cutils/log.h>
+#include <malloc.h>
+#include <string.h>
 
 #include "LightSensor.h"
 

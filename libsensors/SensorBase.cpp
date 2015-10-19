@@ -23,6 +23,8 @@
 #include <sys/select.h>
 
 #include <cutils/log.h>
+#include <malloc.h>
+#include <string.h>
 
 #include <linux/input.h>
 
