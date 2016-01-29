@@ -10,6 +10,3 @@
 /dev/block/mmcblk1p1                                /data       ext4    rw,noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,errors=panic     wait,check,formattable,encryptable=footer,length=-16384
 /dev/block/platform/msm_sdcc.2/by-name/cache        /cache      f2fs    rw,noatime,nosuid,nodev,inline_xattr,flush_merge                                wait
 /dev/block/platform/msm_sdcc.2/by-name/cache        /cache      ext4    rw,noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,errors=panic     wait,check,formattable
-
-# zram
-/dev/block/zram0                                    none        swap    defaults        zramsize=134217728,notrim
