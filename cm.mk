@@ -14,7 +14,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_NAME := cm_sagaopt
 PRODUCT_GMS_CLIENTID_BASE := android-htc-rev
 
-PRODUCT_BOOTANIMATION := device/htc/msm7x30-common/rootdir/system/media/bootanimation.zip
-
 # Release name
 PRODUCT_RELEASE_NAME := sagaopt
