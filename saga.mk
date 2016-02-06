@@ -91,6 +91,11 @@ PRODUCT_PACKAGES += \
 	lights.saga \
 	sensors.saga
 
+# ART
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-filter=balanced \
+    dalvik.vm.image-dex2oat-filter=speed
+
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
