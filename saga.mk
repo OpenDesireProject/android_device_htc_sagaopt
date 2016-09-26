@@ -78,16 +78,8 @@ PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/rootdir/system/usr/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
 	$(COMMON_PATH)/rootdir/system/usr/idc/saga-keypad.idc:system/usr/idc/saga-keypad.idc
 
-# Copy bcm4329 firmware
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
-
-# BCM4329 firmware
-PRODUCT_COPY_FILES += \
-	$(COMMON_PATH)/rootdir/system/vendor/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
-
-# BT / Lights / Sensors
+# Lights / Sensors
 PRODUCT_PACKAGES += \
-	libbt-vendor \
 	lights.saga \
 	sensors.saga
 
