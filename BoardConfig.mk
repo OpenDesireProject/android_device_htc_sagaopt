@@ -33,11 +33,6 @@
 
 TARGET_BOOTLOADER_BOARD_NAME := saga
 
-BOARD_KERNEL_CMDLINE := no_console_suspend=1  androidboot.selinux=permissive androidboot.hardware=htc7x30
-BOARD_KERNEL_RECOVERY_CMDLINE := $(BOARD_KERNEL_CMDLINE) msmsdcc_power_gpio=88
-BOARD_KERNEL_BASE := 0x04400000
-BOARD_KERNEL_PAGE_SIZE := 4096
-
 # Use data partition size here because we are using
 # it as /system
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1232072704
@@ -50,45 +45,21 @@ TARGET_VENDOR_DEVICE_NAME := saga
 # But use sagaopt for updater-script assert check
 TARGET_OTA_ASSERT_DEVICE := sagaopt
 
-TARGET_KERNEL_SOURCE := kernel/htc/msm7x30
+# Kernel
 TARGET_KERNEL_CONFIG := saga_defconfig
 
 # Recovery
 TARGET_RECOVERY_DEVICE_DIRS += device/htc/sagaopt
-
 TARGET_RECOVERY_FSTAB := device/htc/sagaopt/rootdir/fstab.htc7x30
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Brightness
 BRIGHTNESS_SYS_FILE := /sys/devices/platform/leds-pm8058/leds/keyboard-backlight/brightness
 
-# Vold
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
-BOARD_VOLD_MAX_PARTITIONS := 36
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/sagaopt/bluetooth/include
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/sagaopt/bluetooth/vnd_saga.txt
-BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 # Camera
 BOARD_HAVE_HTC_FFC := true
 BOARD_USE_REVERSE_FFC := true
 USE_CAMERA_STUB := true
-
-# TWRP
-TW_THEME := portrait_mdpi
-RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
-TW_INTERNAL_STORAGE_PATH := "/data/media"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_INCLUDE_CRYPTO := true
-TW_NO_SCREEN_BLANK := true
-TW_INCLUDE_DUMLOCK := true
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-#RECOVERY_VARIANT := twrp
-TW_NO_USB_STORAGE := true
-TW_NO_CPU_TEMP := true
-BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
