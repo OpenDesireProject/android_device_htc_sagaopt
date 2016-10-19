@@ -36,9 +36,6 @@ TARGET_OTA_ASSERT_DEVICE := sagaopt
 # Kernel
 TARGET_KERNEL_CONFIG := saga_defconfig
 
-# Brightness
-BRIGHTNESS_SYS_FILE := /sys/devices/platform/leds-pm8058/leds/keyboard-backlight/brightness
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/sagaopt/bluetooth/include
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/sagaopt/bluetooth/vnd_saga.txt
