@@ -1,2 +1,1 @@
 add_lunch_combo cm_sagaopt-userdebug
-add_lunch_combo cm_sagaopt-eng

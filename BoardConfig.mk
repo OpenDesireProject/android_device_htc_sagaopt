@@ -1,4 +1,4 @@
-# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,25 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
-# This file sets variables that control the way modules are built
-# thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets
-# included in a build is to use PRODUCT_PACKAGES in a product
-# definition file).
-#
-
-# WARNING: This line must come *before* including the proprietary
-# variant, so that it gets overwritten by the parent (which goes
-# against the traditional rules of inheritance).
-
-
 # inherit from common msm7x30
 -include device/htc/msm7x30-common/BoardConfigCommon.mk
 
-# inherit from the proprietary version
+# inherit saga vendor
 -include vendor/htc/saga/BoardConfigVendor.mk
 
+# Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := saga
 
 # Use data partition size here because we are using
@@ -48,10 +36,6 @@ TARGET_OTA_ASSERT_DEVICE := sagaopt
 # Kernel
 TARGET_KERNEL_CONFIG := saga_defconfig
 
-# Recovery
-TARGET_RECOVERY_DEVICE_DIRS += device/htc/sagaopt
-TARGET_RECOVERY_FSTAB := device/htc/sagaopt/rootdir/fstab.htc7x30
-
 # Brightness
 BRIGHTNESS_SYS_FILE := /sys/devices/platform/leds-pm8058/leds/keyboard-backlight/brightness
 
@@ -63,3 +47,7 @@ BOARD_BLUEDROID_VENDOR_CONF := device/htc/sagaopt/bluetooth/vnd_saga.txt
 BOARD_HAVE_HTC_FFC := true
 BOARD_USE_REVERSE_FFC := true
 USE_CAMERA_STUB := true
+
+# Recovery
+TARGET_RECOVERY_DEVICE_DIRS += device/htc/sagaopt
+TARGET_RECOVERY_FSTAB := device/htc/sagaopt/rootdir/fstab.htc7x30
