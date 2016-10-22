@@ -79,6 +79,9 @@ PRODUCT_PACKAGES += \
 	lights.saga \
 	sensors.saga
 
+# Bluetooth
+PRODUCT_PACKAGES += bt_vendor.conf
+
 # Audio Props - not sure about this (unused?)
 PRODUCT_PROPERTY_OVERRIDES += \
     media.a1026.nsForVoiceRec=0 \
