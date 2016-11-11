@@ -43,7 +43,7 @@ BOARD_KERNEL_PAGE_SIZE := 4096
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/sagaopt/bluetooth/include
-BOARD_BLUEDROID_VENDOR_CONF := device/htc/sagaopt/bluetooth/vnd_saga.txt
+BOARD_CUSTOM_BT_CONFIG := device/htc/sagaopt/bluetooth/vnd_saga.txt
 
 # Camera
 BOARD_HAVE_HTC_FFC := true
